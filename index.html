@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="theme-color" content="#f5f4f0">
+    <title>Stillwave — 音乐可视化</title>
+    <link rel="icon" type="image/svg+xml" href="logo.svg">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Noto+Sans+SC:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <main id="setup-screen" class="setup-screen">
+        <header class="topbar">
+            <a class="brand" href="#" aria-label="Stillwave 首页">
+                <img class="brand-logo" src="logo.svg" alt="" aria-hidden="true">
+                <span>stillwave</span>
+            </a>
+            <span class="topbar-note">A little space for the music.</span>
+        </header>
+
+        <section class="setup-layout" aria-labelledby="setup-title">
+            <div class="intro">
+                <p class="eyebrow"><span></span> YOUR PERSONAL LISTENING ROOM</p>
+                <h1 id="setup-title">让音乐，<br><em>有迹可循</em></h1>
+                <p class="intro-copy">放入一首喜欢的歌，挑一张属于它的封面。<br>剩下的，就交给此刻的声音。</p>
+                <div class="intro-caption">
+                    <span class="caption-line"></span>
+                    <span>LISTEN CLOSER · FEEL MORE</span>
+                </div>
+            </div>
+
+            <form id="config-form" class="config-form">
+                <div class="form-heading">
+                    <div>
+                        <p class="eyebrow">MAKE IT YOURS</p>
+                        <h2>准备你的空间</h2>
+                    </div>
+                    <span class="step-count">01 <span>/</span> 01</span>
+                </div>
+
+                <div class="text-fields">
+                    <div class="form-group">
+                        <label for="song-title">歌曲名称</label>
+                        <input type="text" id="song-title" name="song-title" placeholder="例如：想你时风起" autocomplete="off">
+                    </div>
+                    <div class="form-group">
+                        <label for="artist">演唱者</label>
+                        <input type="text" id="artist" name="artist" placeholder="例如：单依纯" autocomplete="off">
+                    </div>
+                </div>
+
+                <label class="upload-field" for="audio-file">
+                    <span class="upload-icon audio-upload-icon" aria-hidden="true">♫</span>
+                    <span class="upload-copy">
+                        <strong>添加音频 <span class="required-mark">*</span></strong>
+                        <small id="audio-file-name">MP3、M4A、WAV 等格式</small>
+                    </span>
+                    <span class="upload-action">选择文件 <span aria-hidden="true">↗</span></span>
+                    <input type="file" id="audio-file" accept="audio/*">
+                </label>
+
+                <div class="optional-uploads">
+                    <label class="upload-field compact" for="background-image">
+                        <span class="upload-icon image-upload-icon" aria-hidden="true">▧</span>
+                        <span class="upload-copy">
+                            <strong>专辑封面</strong>
+                            <small id="background-file-name">添加一张图片</small>
+                        </span>
+                        <span class="upload-plus" aria-hidden="true">+</span>
+                        <input type="file" id="background-image" accept="image/*">
+                    </label>
+                    <label class="upload-field compact" for="lyrics-file">
+                        <span class="upload-icon lyrics-upload-icon" aria-hidden="true">≡</span>
+                        <span class="upload-copy">
+                            <strong>同步歌词</strong>
+                            <small id="lyrics-file-name">支持 .lrc 文件</small>
+                        </span>
+                        <span class="upload-plus" aria-hidden="true">+</span>
+                        <input type="file" id="lyrics-file" accept=".lrc,text/plain">
+                    </label>
+                </div>
+
+                <div class="form-footer">
+                    <label class="color-setting" for="color-picker">
+                        <span class="color-swatch"><input type="color" id="color-picker" value="#8c9b7a" aria-label="选择主题颜色"></span>
+                        <span><strong>氛围色</strong><small>随心选择你的点缀色</small></span>
+                    </label>
+                    <button id="submit-config" type="submit">
+                        <span>进入聆听空间</span><span class="button-arrow" aria-hidden="true">→</span>
+                    </button>
+                </div>
+                <p id="form-message" class="form-message" role="status" aria-live="polite"></p>
+            </form>
+        </section>
+
+        <footer class="page-footer">
+            <span>MADE FOR THE MOMENT</span>
+            <span>音频仅在你的浏览器中播放</span>
+        </footer>
+    </main>
+
+    <main id="player-container" class="player-screen" hidden>
+        <header class="player-topbar">
+            <a class="brand brand-light" href="#" aria-label="Stillwave 首页">
+                <img class="brand-logo" src="logo.svg" alt="" aria-hidden="true">
+                <span>stillwave</span>
+            </a>
+            <span class="listening-label"><span class="live-dot"></span> NOW LISTENING</span>
+            <button id="edit-config" class="text-button" type="button"><span aria-hidden="true">←</span> 编辑曲目</button>
+        </header>
+
+        <section class="player-layout" aria-label="音乐播放器">
+            <div class="track-panel">
+                <div class="track-meta">
+                    <p class="eyebrow">YOUR LISTENING ROOM</p>
+                    <h1 id="player-title">未命名曲目</h1>
+                    <p id="player-artist" class="player-artist">未知演唱者</p>
+                </div>
+
+                <div class="artwork-frame">
+                    <div id="cover-placeholder" class="cover-placeholder" aria-hidden="true">
+                        <span class="cover-orbit orbit-one"></span>
+                        <span class="cover-orbit orbit-two"></span>
+                        <span class="cover-center">S<span>·</span>W</span>
+                    </div>
+                    <img id="cover-art" class="cover-art" alt="专辑封面" hidden>
+                    <span class="artwork-tag">SIDE A <span>·</span> YOUR MOMENT</span>
+                </div>
+
+                <div class="audio-control">
+                    <audio id="audioElement" preload="metadata"></audio>
+                    <div class="seek-row">
+                        <span id="currentTime" class="time-display">0:00</span>
+                        <input id="seek-bar" class="seek-bar" type="range" min="0" max="1000" value="0" aria-label="播放进度">
+                        <span id="duration" class="time-display">0:00</span>
+                    </div>
+                    <div class="transport-row">
+                        <span class="playback-caption">TAKE YOUR TIME</span>
+                        <button id="playButton" class="play-button" type="button" aria-label="播放">
+                            <span class="play-icon" aria-hidden="true">▶</span>
+                            <span class="pause-icon" aria-hidden="true">Ⅱ</span>
+                        </button>
+                        <span class="playback-caption right-caption">LISTEN IN FULL</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="experience-panel">
+                <section class="visualizer-card" aria-label="音频可视化">
+                    <div class="visualizer-heading">
+                        <span class="eyebrow">SOUND IN MOTION</span>
+                        <span class="visualizer-status"><span></span> LIVE</span>
+                    </div>
+                    <canvas id="visualizer" aria-label="随音乐律动的音频可视化"></canvas>
+                    <div class="visualizer-foot"><span>LOW</span><span class="visualizer-track"></span><span>HIGH</span></div>
+                </section>
+
+                <section class="lyrics-panel" aria-label="歌词">
+                    <div class="lyrics-heading">
+                        <div>
+                            <p class="eyebrow">WORDS & FEELING</p>
+                            <h2>歌词</h2>
+                        </div>
+                        <span class="lyrics-mark" aria-hidden="true">“</span>
+                    </div>
+                    <div class="lyrics-container">
+                        <div id="lyrics" class="lyrics-list">
+                            <p class="lyrics-empty">添加一份 .lrc 歌词，<br>让每一句都恰好落在此刻。</p>
+                        </div>
+                    </div>
+                    <div class="lyrics-bottom"><span class="caption-line"></span><span>WORDS THAT STAY</span></div>
+                </section>
+            </div>
+        </section>
+
+        <footer class="player-footer">
+            <span>STILLWAVE <span class="footer-separator">/</span> PERSONAL MUSIC VISUALIZER</span>
+            <span>沉浸于此刻，不被打扰。</span>
+        </footer>
+        <p id="player-message" class="player-message" role="status" aria-live="polite"></p>
+    </main>
+    <script src="script.js"></script>
+</body>
+</html>
