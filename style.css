@@ -1777,3 +1777,360 @@ button {
         transition-duration: 0.01ms !important;
     }
 }
+
+.not-found-document {
+    height: auto;
+    min-height: 100%;
+    overflow-x: hidden;
+    overflow-y: auto;
+}
+
+.not-found-body {
+    height: auto;
+    min-height: 100vh;
+    min-height: 100dvh;
+    overflow: visible;
+}
+
+.not-found-page {
+    position: relative;
+    display: flex;
+    width: 100%;
+    min-height: 100vh;
+    min-height: 100dvh;
+    flex-direction: column;
+    padding: 0 7.2%;
+    overflow: hidden;
+    isolation: isolate;
+}
+
+.not-found-page::before,
+.not-found-page::after {
+    position: absolute;
+    z-index: -1;
+    display: block;
+    border: 1px solid rgba(140, 155, 122, 0.12);
+    border-radius: 50%;
+    content: "";
+    pointer-events: none;
+}
+
+.not-found-page::before {
+    top: 15%;
+    left: -22rem;
+    width: 42rem;
+    height: 42rem;
+}
+
+.not-found-page::after {
+    right: -16rem;
+    bottom: -27rem;
+    width: 48rem;
+    height: 48rem;
+}
+
+.not-found-topbar {
+    display: flex;
+    min-height: 84px;
+    flex: 0 0 84px;
+    align-items: center;
+    justify-content: space-between;
+    border-bottom: 1px solid var(--line);
+}
+
+.not-found-note {
+    color: var(--muted);
+    font-size: 11px;
+    letter-spacing: 1.1px;
+}
+
+.not-found-content {
+    display: grid;
+    width: 100%;
+    max-width: 1320px;
+    flex: 1;
+    grid-template-columns: 1fr 0.93fr;
+    align-items: center;
+    gap: clamp(48px, 8vw, 140px);
+    margin: 0 auto;
+    padding: clamp(48px, 7vh, 88px) 0;
+}
+
+.not-found-copy {
+    padding: 0 0 12px;
+}
+
+.not-found-eyebrow {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.not-found-eyebrow span {
+    display: inline-block;
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background: var(--accent);
+}
+
+.not-found-code {
+    margin: 24px 0 0;
+    color: var(--accent);
+    font-size: clamp(96px, 15vw, 180px);
+    font-weight: 500;
+    letter-spacing: -0.095em;
+    line-height: 0.95;
+}
+
+.not-found-copy h1 {
+    margin: 12px 0 16px;
+    font-size: clamp(32px, 4vw, 50px);
+    font-weight: 500;
+    letter-spacing: -2px;
+}
+
+.not-found-copy h1 span {
+    color: var(--accent);
+}
+
+.not-found-description {
+    margin: 0;
+    color: #73766e;
+    font-size: 14px;
+    line-height: 2;
+}
+
+.not-found-home {
+    display: inline-flex;
+    min-height: 50px;
+    align-items: center;
+    justify-content: space-between;
+    gap: 42px;
+    margin-top: 34px;
+    padding: 0 16px;
+    background: var(--ink);
+    color: #fff;
+    font-size: 12px;
+    text-decoration: none;
+    transition: background 180ms ease, transform 180ms ease;
+}
+
+.not-found-home:hover {
+    transform: translateY(-2px);
+    background: #42463c;
+}
+
+.not-found-home:focus-visible {
+    outline: 2px solid var(--accent);
+    outline-offset: 3px;
+}
+
+.not-found-arrow {
+    color: #c6d0bb;
+    font-size: 18px;
+}
+
+.not-found-art {
+    position: relative;
+    display: grid;
+    width: min(100%, 420px);
+    aspect-ratio: 1;
+    justify-self: center;
+    place-items: center;
+}
+
+.not-found-orbit {
+    position: absolute;
+    border: 1px solid rgba(140, 155, 122, 0.2);
+    border-radius: 50%;
+}
+
+.orbit-outer {
+    inset: 3%;
+}
+
+.orbit-inner {
+    inset: 14%;
+    border-color: rgba(140, 155, 122, 0.3);
+}
+
+.not-found-disc {
+    position: relative;
+    display: grid;
+    width: 58%;
+    aspect-ratio: 1;
+    border: 1px solid rgba(255, 255, 252, 0.16);
+    border-radius: 50%;
+    background: repeating-radial-gradient(circle, #34372f 0, #34372f 2px, #2d3029 3px, #2d3029 5px);
+    box-shadow: 0 22px 54px rgba(58, 60, 50, 0.18);
+    place-items: center;
+}
+
+.not-found-disc-center {
+    width: 25%;
+    aspect-ratio: 1;
+    border: 8px solid #d8d9ce;
+    border-radius: 50%;
+    background: var(--accent);
+}
+
+.not-found-wave {
+    position: absolute;
+    width: 3px;
+    border-radius: 3px;
+    background: var(--accent);
+    opacity: 0.78;
+}
+
+.wave-one {
+    top: 16%;
+    left: 31%;
+    height: 24px;
+}
+
+.wave-two {
+    top: 10%;
+    left: 39%;
+    height: 42px;
+}
+
+.wave-three {
+    top: 15%;
+    left: 47%;
+    height: 30px;
+}
+
+.wave-four {
+    top: 8%;
+    left: 55%;
+    height: 56px;
+}
+
+.wave-five {
+    top: 14%;
+    left: 63%;
+    height: 34px;
+}
+
+.wave-six {
+    top: 11%;
+    left: 71%;
+    height: 46px;
+}
+
+.wave-seven {
+    top: 18%;
+    left: 79%;
+    height: 22px;
+}
+
+.not-found-footer {
+    display: flex;
+    min-height: 50px;
+    flex: 0 0 50px;
+    align-items: center;
+    justify-content: space-between;
+    border-top: 1px solid var(--line);
+    color: #a0a198;
+    font-size: 9px;
+    letter-spacing: 1.1px;
+}
+
+.not-found-footer span span {
+    padding: 0 5px;
+    color: var(--accent);
+}
+
+.not-found-footer span:last-child {
+    letter-spacing: 0;
+}
+
+@media (max-width: 900px) {
+    .not-found-page {
+        padding-right: 5%;
+        padding-left: 5%;
+    }
+
+    .not-found-content {
+        gap: 38px;
+    }
+}
+
+@media (max-width: 680px) {
+    .not-found-page {
+        padding: 0 22px;
+    }
+
+    .not-found-topbar {
+        min-height: 68px;
+        flex-basis: 68px;
+    }
+
+    .not-found-note {
+        font-size: 9px;
+        letter-spacing: 0.5px;
+    }
+
+    .not-found-content {
+        grid-template-columns: 1fr;
+        gap: 16px;
+        padding: 42px 0;
+    }
+
+    .not-found-copy {
+        padding: 0 2px;
+    }
+
+    .not-found-code {
+        margin-top: 20px;
+        font-size: clamp(100px, 30vw, 150px);
+    }
+
+    .not-found-copy h1 {
+        margin-top: 8px;
+        font-size: clamp(31px, 8vw, 42px);
+    }
+
+    .not-found-description {
+        font-size: 12px;
+    }
+
+    .not-found-home {
+        min-height: 46px;
+        margin-top: 24px;
+    }
+
+    .not-found-art {
+        width: min(75%, 270px);
+        margin: 0 auto;
+    }
+
+    .not-found-footer {
+        min-height: 52px;
+        flex-basis: 52px;
+        gap: 12px;
+        font-size: 7px;
+        letter-spacing: 0.5px;
+    }
+
+    .not-found-footer span:last-child {
+        text-align: right;
+    }
+}
+
+@media (max-width: 390px) {
+    .not-found-page {
+        padding-right: 16px;
+        padding-left: 16px;
+    }
+
+    .not-found-note {
+        max-width: 135px;
+        text-align: right;
+    }
+
+    .not-found-art {
+        width: min(68%, 230px);
+    }
+}

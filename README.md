@@ -26,6 +26,7 @@ Stillwave 是一个纯前端的音乐可视化播放器。选择本地歌曲、�
 ```text
 .
 ├── index.html   # 页面结构
+├── 404.html     # 找不到页面时显示的错误页面
 ├── style.css    # 页面样式
 ├── script.js    # 播放器、歌词和可视化逻辑
 └── logo.svg     # 页面图标
