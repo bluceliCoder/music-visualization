@@ -1,0 +1,3 @@
+﻿User-agent: *
+Allow: /
+Sitemap: https://blucelicoder.github.io/music-visualization/sitemap.xml
